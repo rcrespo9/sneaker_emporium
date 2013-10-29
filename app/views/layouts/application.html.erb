@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SneakerEmporium</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<h1>Rudy's Sneaker Emporium</h1>
+<%= link_to "Home", root_path %>
+
+<%= yield %>
+
+</body>
+</html>

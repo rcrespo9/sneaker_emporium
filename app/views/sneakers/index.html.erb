@@ -1,0 +1,17 @@
+<h1>Sneakers</h1>
+<table>
+	<thead>
+		<tr>
+			<th>Sneaker</th>
+			<th>Brand</th>
+			<th>Store</th>
+		</tr>
+	</thead>
+	<tbody>
+	<% @sneakers.each do |sneaker| %>
+	<tr>
+		<td><%= sneaker.name %> </td>
+	</tr>
+	<% end %>
+	</tbody>
+</table>
