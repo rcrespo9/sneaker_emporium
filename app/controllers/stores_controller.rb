@@ -5,19 +5,38 @@ class StoresController < ApplicationController
 
 	def new
 		@store = Store.new
-		@sneakers = Sneaker.all
+	end
+	
+	def create
+		Store.create(params[:store])
+
+		redirect_to stores_path
 	end
 
-	def create
-		@store = Store.create(params[:store])
+	def show
+		@store = Store.find(params[:id])
 	end
 
 	def edit
+		@store = Store.find(params[:id])
 	end
 
 	def update
+		store = Store.find(params[:id])
+		store.update_attributes(params[:store])
+
+		redirect_to stores_path
 	end
 
 	def destroy
-	end
+
+     	store = Store.find(params[:id])
+     	store.sneakers.each do |sneaker|
+       		sneaker.destroy
+    	end
+ 
+     	store.destroy
+ 
+     	redirect_to stores_path
+   	end
 end

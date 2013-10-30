@@ -1,17 +1,20 @@
-<h1>Sneakers</h1>
+<h2> Sneakers </h2>
+<%= link_to 'New Sneaker', new_sneaker_path %>
 <table>
-	<thead>
-		<tr>
-			<th>Sneaker</th>
-			<th>Brand</th>
-			<th>Store</th>
-		</tr>
-	</thead>
-	<tbody>
-	<% @sneakers.each do |sneaker| %>
-	<tr>
-		<td><%= sneaker.name %> </td>
-	</tr>
-	<% end %>
-	</tbody>
+        <thead>
+                <td>Name</td>
+                <td>Price</td>
+                <td>Edit</td>
+                <td>Delete</td>
+        </thead>
+        <tbody>
+                <% @sneakers.each do |sneaker| %>
+                        <tr>
+                                <td><%= link_to sneaker.name, sneaker_path(sneaker) %></td>
+                                <td><%= sneaker.price %></td>
+                                <td><%= link_to 'Edit', edit_sneaker_path(sneaker) %></td>
+                                <td><%= link_to 'Delete', sneaker_destroy_path(sneaker), method: :post %></td>
+                        </tr>
+                <% end %>
+        </tbody>
 </table>

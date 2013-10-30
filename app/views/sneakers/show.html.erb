@@ -1,0 +1,12 @@
+<h3><%= @sneaker.name %></h3>
+
+<ul>
+        <li>Price: <%= @sneaker.price %></li>
+        <li>Brand: <%= link_to @sneaker.brand.name, brand_path(@sneaker.brand) %></li>
+        <h3>Available At: </h3>
+        <li>
+                <% @sneaker.stores.each do |store| %>
+                        <p><%= link_to store.name, store_path(store) %></p>
+                <% end %>
+        </li>
+</ul>

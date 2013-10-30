@@ -1,0 +1,7 @@
+<h3><%= @brand.name %></h3>
+
+<ul>
+        <% @brand.sneakers.each do |sneaker| %>
+                <li><%= link_to sneaker.name, sneaker_path(sneaker) %></li>
+        <% end %>
+</ul>

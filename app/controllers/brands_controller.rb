@@ -12,7 +12,7 @@ class BrandsController < ApplicationController
 	end
 
 	def create
-		@brand = Brand.create(params[:brand])
+		Brand.create(params[:brand])
 		redirect_to brands_path
 	end
 
@@ -26,9 +26,20 @@ class BrandsController < ApplicationController
 		redirect_to 
 	end
 
-	def destroy
-		brand = Brand.find(params[:id])
-		brand.destroy
-		redirect_to
-	end
+    def destroy
+                
+        brand = Brand.find(params[:id])
+
+                
+        brand.sneakers.each do |sneaker|
+            sneaker.stores.each do |store|
+                store.destroy
+        end
+            sneaker.destroy
+        end
+
+        brand.destroy
+
+        redirect_to brands_path
+    end
 end

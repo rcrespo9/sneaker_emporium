@@ -1,0 +1,9 @@
+<h3><%= @store.name %></h3>
+<ul>
+        <li>
+                <% @store.sneakers.each do |sneaker| %>
+                        <p><%= sneaker.name %></p>
+                        <p><%= sneaker.price %></p>
+                <% end %>
+        </li>
+</ul>

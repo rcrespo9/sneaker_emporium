@@ -5,19 +5,38 @@ class SneakersController < ApplicationController
 
 	def new
 		@sneaker = Sneaker.new(params[:id])
-		@stores = Store.all
 	end
 
 	def create
-		@sneaker = Sneaker.create(params[:sneaker])
+		Sneaker.create(params[:sneaker])
+
+		redirect_to sneakers_path
+	end
+
+	def show
+		@sneaker = Sneaker.find(params[:id])
 	end
 
 	def edit
+		@sneaker = Sneaker.find(params[:id])
 	end
 
 	def update
+		sneaker = Sneaker.find(params[:id])
+		sneaker.update_attributes(params[:sneaker])
+
+		redirect_to sneakers_path
 	end
 
 	def destroy
-	end
+
+     	sneaker = Sneaker.find(params[:id])
+     	sneaker.stores.each do |store|
+       		store.destroy
+    	end
+ 
+     	sneaker.destroy
+ 
+     	redirect_to sneakers_path
+   	end
 end
